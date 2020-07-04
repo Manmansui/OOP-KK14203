@@ -1,0 +1,76 @@
+import java.util.Scanner;
+
+class Student{
+   String name, matricNo;
+   byte age;
+   double cgpa;
+
+   public Student(){
+      name = "";
+      matricNo = "";
+      age = 0;
+      cgpa = 0.0;
+   }
+  
+   public Student(String name, String matricNo, byte age, double cgpa){
+      this.name = name;
+      this.matricNo = matricNo;
+      this.age = age;
+      this.cgpa = cgpa;
+   }
+   
+   public void setName(String name){
+      this.name = name;
+   }
+   
+   public void setMatricNo(String matricNo){
+      this.matricNo = matricNo;
+   }
+   
+   public void setAge(byte age){
+      this.age = age;
+   }
+   
+   public void setCgpa(double cgpa){
+      this.cgpa = cgpa;
+   }
+   
+   public void Print(){
+      System.out.println("Name: " + name);
+      System.out.println("Matrics No: " + matricNo);
+      System.out.println("Age: " + age);
+      System.out.println("Cgpa: " + cgpa);
+
+   }
+}
+
+
+public class Lab3_part1{
+   public static void main(String args[]){
+      String name, matricNo;
+      byte age;
+      double cgpa;
+      
+      Scanner scan = new Scanner(System.in);
+      System.out.println("Please enter student's name: ");
+      name = scan.nextLine();
+      
+      System.out.println("Matrics No: ");
+      matricNo = scan.nextLine();
+      
+      System.out.println("Age: ");
+      age = scan.nextByte();
+      
+      System.out.println("Cgpa: ");
+      cgpa = scan.nextDouble();
+      
+      Student firman = new Student();
+      firman.setName(name);
+      firman.setMatricNo(matricNo);
+      firman.setAge(age);
+      firman.setCgpa(cgpa);
+   
+      firman.Print();
+   }
+
+}
