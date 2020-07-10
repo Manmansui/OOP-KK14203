@@ -1,0 +1,203 @@
+import java.awt.*;
+import javax.swing.*;
+
+class JPanelDemo extends JPanel{ // class JPanel to inherit
+    private JLabel header;
+    public JPanelDemo(){
+       header = new JLabel("Test cake order");
+       add(header);
+   }
+}
+
+abstract class Cake extends JFrame{ //frame initialization
+   String name;
+   String[] topping = new String[10];
+   String[] toppingOrder = new String[10];
+   double priceSmall, priceMedium, priceBig, totalPrice;
+   int size, quantity;
+   private int z = 20; //for spacing in printcake
+   private int Q = 0;// for spacing in ordercake
+
+   Cake(String name){
+      this.name = name;                     
+      setTitle("TestCake");
+      getContentPane().setBackground(Color.lightGray);
+      setSize(400, 500);
+      setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+      
+      JPanelDemo panel = new JPanelDemo(); //Panel inheritance
+      add(panel, BorderLayout.NORTH); // many many
+      setVisible(true);
+   }
+
+   abstract void setCake(String[] topping, double priceSmall, double priceMedium, double priceBig);
+
+   void orderCake(String[] toppingOrder, int quantity, int size){
+      this.toppingOrder = toppingOrder;
+      this.quantity = quantity;
+      this.size = size;
+   }
+   double getSizePrice(){
+      if(size == 1) return priceSmall;
+      else if(size == 2) return priceMedium;
+      else return priceBig;                        
+   }
+   
+   double getTotalPrice(){
+      totalPrice = getSizePrice() * quantity + (toppingOrder.length*10);
+      return totalPrice;
+   }
+
+   String getSizeCake(){
+      if(size == 1) return "Small";
+      else if(size == 2) return "Medium";
+      else return "Big";  
+   }
+
+   void printCake(){
+   
+      System.out.println("----------------------");
+      System.out.println("       Cake Menu      ");
+      System.out.println("----------------------");
+      System.out.println(name + " cake with available toppings: ");
+      for(int i=0; i<topping.length; i++){
+         System.out.println((i+1)+ ") " + topping[i]);   
+      }
+      System.out.println("\nPrice: ");
+      System.out.println("[1] Small  : " + priceSmall);
+      System.out.println("[2] Medium : " + priceMedium);
+      System.out.println("[3] Big    : " + priceBig); 
+      
+      //-----------PrintCakeGUI-------------
+        
+        JLabel jcomp1 = new JLabel (" Test Cake Order");
+        JLabel jcomp2 = new JLabel ("-----------------------");
+        JLabel jcomp3 = new JLabel ("Cake Menu");
+        JLabel jcomp4 = new JLabel ("-----------------------");
+        JLabel jcomp5 = new JLabel (name + " cake with available toppings");//
+        
+        int a = topping.length;//----------------
+        JLabel[] jcompz = new JLabel[a];
+        //initializing, add, setbound for multiple choice
+        for(int i=0; i<a ;i++){
+            jcompz[i] = new JLabel((i+1) + ") " + topping[i]); 
+            add(jcompz[i]);
+            jcompz[i].setBounds (10, 85 + z, 203, 25);
+            z += 20;//global variable
+        }
+
+        JLabel jcomp9 = new JLabel ("Price:");
+        JLabel jcomp10 = new JLabel ("[1] Small     : " + String.valueOf(priceSmall));
+        JLabel jcomp11 = new JLabel ("[2] Medium : " + String.valueOf(priceMedium));
+        JLabel jcomp12 = new JLabel ("[3] Big         : " + String.valueOf(priceBig));
+
+        setLayout (null);
+
+        //add components to frame
+        add (jcomp1);
+        add (jcomp2);
+        add (jcomp3);
+        add (jcomp4);
+        add (jcomp5);
+
+        add (jcomp9);
+        add (jcomp10);
+        add (jcomp11);
+        add (jcomp12);
+
+        //set component bounds
+        jcomp1.setBounds (185, 5, 100, 25);
+        jcomp2.setBounds (10, 30, 100, 25);
+        jcomp3.setBounds (29, 46, 96, 25);
+        jcomp4.setBounds (11, 60, 100, 25);
+        jcomp5.setBounds (10, 85, 261, 25);
+        jcomp9.setBounds (10, z+95, 100, 25);//---------------
+        jcomp10.setBounds (10,z+110, 143, 25);//
+        jcomp11.setBounds (10,z+130, 200, 25);//
+        jcomp12.setBounds (10,z+150, 200, 25);//
+    
+        //-----------------------------
+    }
+      
+   
+   void printOrder(){
+      System.out.println("\n\nCake Order details: ");
+      System.out.println("-------------------------------");
+      System.out.print("Topping: ");
+      for(int i=0; i<toppingOrder.length; i++){
+            System.out.print((i+1)+ ") " + toppingOrder[i] + " ");   
+         }
+      System.out.println("\nSize: " + getSizeCake());
+      System.out.println("-------------------------------");
+      System.out.println("TOTAL PRICE: RM " + getTotalPrice());
+      System.out.println("-------------------------------");
+      
+      //-------------PrintOrderGUI--------------
+      
+      JLabel jcomp13 = new JLabel ("Cake Order Details: ");
+      JLabel jcomp14 = new JLabel ("Size: " + getSizeCake());
+      
+      int t = toppingOrder.length;
+      JLabel[] jcompx = new JLabel[t];
+      //initializing, add, setbound for multiple choice
+         for(int i=0; i<t; i++){
+            jcompx[i] = new JLabel((i+1) + ") " + toppingOrder[i]); 
+            add(jcompx[i]);
+            jcompx[i].setBounds (80, 315+Q, 150, 25);
+            Q += 20;//global variable
+         }
+      
+      JLabel jcomp15 = new JLabel ("Toppings:");//add for loop to adjust string size
+      JLabel jcomp16 = new JLabel ("-----------------------------------------------");
+      JLabel jcomp17 = new JLabel ("-----------------------------------------------");
+      JLabel jcomp18 = new JLabel ("TOTAL PRICE: RM " + String.valueOf(getTotalPrice()));
+      JLabel jcomp19 = new JLabel ("-----------------------------------------------");
+      
+      setLayout (null);
+      
+      add(jcomp13);
+      add(jcomp14);
+      add(jcomp15);
+      add(jcomp16);
+      add(jcomp17);
+      add(jcomp18);
+      add(jcomp19);
+      
+      //dont disturb this one
+      jcomp13.setBounds (10, 285, 250, 25);
+      jcomp15.setBounds (10, 315, 100, 25);//topping
+      jcomp16.setBounds (10, 296, 250, 25);//line
+      jcomp14.setBounds (11, Q+315, 100, 25);//size
+      jcomp17.setBounds (10, Q+335, 250, 25);//--
+      jcomp18.setBounds (10, Q+355, 250, 25);//total
+      jcomp19.setBounds (10, Q+375, 250, 25);//--
+   
+      //----------------end------------------
+   }
+
+}
+
+class BlackForest extends Cake{
+   BlackForest(String name){
+      super(name);
+   }
+
+   void setCake(String[] topping, double priceSmall, double priceMedium, double priceBig){
+      this.topping = topping;
+      this.priceSmall = priceSmall;
+      this.priceMedium = priceMedium;
+      this.priceBig = priceBig;
+   }
+}
+public class TestCakeGUI{
+    public static void main(String args[]){
+       Cake c = new BlackForest("BlackForest");
+       String[] topping = {"Chocolate", "Cherries", "Whipped Cream", "Candy Pop"};
+       c.setCake(topping, 45.00, 65.00, 80.00);
+       c.printCake();
+      
+       String[] order = {"Chocolate", "Cherries", "Candy Pop"};
+       c.orderCake(order, 1, 2);
+       c.printOrder();
+    }
+}
