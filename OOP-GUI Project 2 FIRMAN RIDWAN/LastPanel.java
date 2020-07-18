@@ -101,6 +101,7 @@ class LastPanel extends JPanel{
         back = new JButton ("Edit");
         printResult = new JLabel("");
         printResult.setBorder(border);
+	printResult.setFont(new Font("Arial", Font.BOLD, 10));
         SP = new JScrollPane(info);
 
         //adjust size and set layout
