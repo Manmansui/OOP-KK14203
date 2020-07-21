@@ -27,6 +27,7 @@ class LoginPanel extends JPanel {
         header.setFont(new Font("Arial", Font.ITALIC, 20));
         header.setBorder(border); 
         header.setOpaque(true);
+        header.setToolTipText("firman 123");
         header.setForeground(Color.DARK_GRAY);
         
         jcomp2 = new JLabel ("Username");
