@@ -136,7 +136,7 @@ class LastPanel extends JPanel{
                         "\nOwner: " + a.getName() +
                         "\nI/C: " + a.getIc() +
                         "\nAge: " + a.getAge() +
-                        "\nAddress " + a.getAddress() +
+                        "\nAddress: " + a.getAddress() +
                         "\n" +
                         "\nPet's name: " + b.getPetName() +
                         "\nPet's age: " + b.getPetAge() +
