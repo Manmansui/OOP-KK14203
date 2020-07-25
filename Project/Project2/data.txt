@@ -1,0 +1,162 @@
+#DETAILS#
+Owner: testing only
+I/C: sada
+Age: adasd
+Address dasda
+
+Pet's name: sdas
+Pet's age: dasd
+Pet's type: dasd
+Pet's Special feature: dasdas
+
+Entry date: 1/1/1995
+Appoinment date: 1/1/1995
+
+Disease: tesititit
+Medicine: fsf
+Medicine prescription: sdfs
+
+Ward confirmation: Yes
+Warding date: 11/7/2014
+Ward No: fsdf
+Date of discharge: 13/8/2001
+
+Treatment cost: dsds
+--------------------------------------------------------
+
+
+#DETAILS#
+Owner: eqw
+I/C: eqw
+Age: eq
+Address ew
+
+Pet's name: testing
+Pet's age: asdf
+Pet's type: fda
+Pet's Special feature: fa
+
+Entry date: 1/10/1995
+Appoinment date: 1/1/1995
+
+Disease: dfsa
+Medicine: fdsa
+Medicine prescription: fsadfs
+
+Ward confirmation: Yes
+Warding date: 3/1/1995
+Ward No: sdfsf
+Date of discharge: 1/1/1995
+
+Treatment cost: fdsfsaf
+--------------------------------------------------------
+
+
+#DETAILS#
+Owner: eqw
+I/C: eqw
+Age: eq
+Address ew
+
+Pet's name: haruna
+Pet's age: asdf
+Pet's type: fda
+Pet's Special feature: fa
+
+Entry date: 1/10/1995
+Appoinment date: 1/1/1995
+
+Disease: dfsa
+Medicine: fdsa
+Medicine prescription: fsadfs
+
+Ward confirmation: Yes
+Warding date: 3/11/1995
+Ward No: sdfsf
+Date of discharge: 1/1/1995
+
+Treatment cost: fdsfsaf
+--------------------------------------------------------
+
+
+#DETAILS#
+Owner: dsa
+I/C: das
+Age: asd
+Address dsa
+
+Pet's name: karl maximus
+Pet's age: dsa
+Pet's type: das
+Pet's Special feature: das
+
+Entry date: 1/1/1995
+Appoinment date: 1/1/1995
+
+Disease: dad
+Medicine: das
+Medicine prescription: dsa
+
+Ward confirmation: Yes
+Warding date: 3/1/1995
+Ward No: sda
+Date of discharge: 22/1/1995
+
+Treatment cost: ds
+--------------------------------------------------------
+
+
+#DETAILS#
+Owner: ewq
+I/C: eqwe
+Age: qwe
+Address qw
+
+Pet's name: das
+Pet's age: sa
+Pet's type: das
+Pet's Special feature: dsa
+
+Entry date: 1/1/1995
+Appoinment date: 1/1/2002
+
+Disease: dsa
+Medicine: dsa
+Medicine prescription: dsa
+
+Ward confirmation: Yes
+Warding date: 4/2/1998
+Ward No: dsa
+Date of discharge: 17/3/1996
+
+Treatment cost: kiki
+--------------------------------------------------------
+
+
+#DETAILS#
+Owner: ds
+I/C: dsa
+Age: dsa
+Address dsa
+
+Pet's name: dsa
+Pet's age: dsd
+Pet's type: sw
+Pet's Special feature: wdwd
+
+Entry date: 1/1/1995
+Appoinment date: 5/1/1995
+
+Disease: dsa
+Medicine: das
+Medicine prescription: dsdsad
+
+Ward confirmation: Yes
+Warding date: 15/1/1995
+Ward No: sda
+Date of discharge: 4/1/1995
+
+Treatment cost: csdas
+--------------------------------------------------------
+
+

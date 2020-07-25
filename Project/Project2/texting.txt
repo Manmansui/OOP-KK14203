@@ -1,0 +1,27 @@
+#DETAILS#
+Owner: ewq
+I/C: eqwe
+Age: qwe
+Address qw
+
+Pet's name: das
+Pet's age: sa
+Pet's type: das
+Pet's Special feature: dsa
+
+Entry date: 1/1/1995
+Appoinment date: 1/1/2002
+
+Disease: dsa
+Medicine: dsa
+Medicine prescription: dsa
+
+Ward confirmation: Yes
+Warding date: 4/2/1998
+Ward No: dsa
+Date of discharge: 17/3/1996
+
+Treatment cost: kiki
+--------------------------------------------------------
+
+
