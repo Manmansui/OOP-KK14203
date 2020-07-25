@@ -27,12 +27,13 @@ class LastPanel extends JPanel{
     private JMenuBar menuBar;
     private JMenu menu;
     private JMenuItem NEWOWNER;
-    private JMenuItem EXIT;
+    private JMenuItem VIEWDATA;
+    private JMenuItem fileChange;
 
 
     JFrame frame3;
     JFrame popup;//frame for popup filename
-    String filename = "text.txt";//user can change to another filename//
+    String filename = "data.txt";//user can change to another filename//
     String result = "";
     String extension = "";
     String finals = "";
@@ -59,15 +60,20 @@ class LastPanel extends JPanel{
         menu.add(NEWOWNER);
         
         
-        EXIT = new JMenuItem("Exit.",KeyEvent.VK_G);
-        EXIT.setAccelerator(KeyStroke.getKeyStroke(
-                KeyEvent.VK_1, ActionEvent.ALT_MASK));
-        menu.add(EXIT);       
+        VIEWDATA = new JMenuItem("View data.",KeyEvent.VK_G);
+        VIEWDATA.setAccelerator(KeyStroke.getKeyStroke(
+                KeyEvent.VK_2, ActionEvent.ALT_MASK));
+        menu.add(VIEWDATA);      
+        
+        fileChange = new JMenuItem("Change Filename.",KeyEvent.VK_D);
+        fileChange.setAccelerator(KeyStroke.getKeyStroke(
+                KeyEvent.VK_3, ActionEvent.ALT_MASK));
+        menu.add(fileChange); 
                 
                 
         menuBar.add(menu);
         add(menuBar);   
-        menuBar.setBounds(2, 0, 100, 27); 
+        menuBar.setBounds(2, 0, 640, 27); 
         
         NEWOWNER.addActionListener(new ActionListener() {
          public void actionPerformed(ActionEvent ev) {
@@ -80,15 +86,18 @@ class LastPanel extends JPanel{
          }
        });
        
-        EXIT.addActionListener(new ActionListener() {
+        VIEWDATA.addActionListener(new ActionListener() {
          public void actionPerformed(ActionEvent ev) {
-            popup = new JFrame();
-            int dialogResult = JOptionPane.showConfirmDialog (popup, "Are you sure?","Warning",JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
-            if(dialogResult == JOptionPane.YES_OPTION){
-              System.exit(0);
-            }
+            readFile();
          }
        });
+       
+       fileChange.addActionListener(new ActionListener() {
+         public void actionPerformed(ActionEvent ev) {
+            filename = JOptionPane.showInputDialog(null, "Enter new filename:");
+         }
+       });
+
        
         //------------------------
         //construct components
@@ -100,8 +109,8 @@ class LastPanel extends JPanel{
         exit = new JButton ("Exit");
         back = new JButton ("Edit");
         printResult = new JLabel("");
+        printResult.setFont(new Font("Arial", Font.BOLD, 10));
         printResult.setBorder(border);
-	printResult.setFont(new Font("Arial", Font.BOLD, 10));
         SP = new JScrollPane(info);
 
         //adjust size and set layout
@@ -136,7 +145,7 @@ class LastPanel extends JPanel{
                         "\nOwner: " + a.getName() +
                         "\nI/C: " + a.getIc() +
                         "\nAge: " + a.getAge() +
-                        "\nAddress: " + a.getAddress() +
+                        "\nAddress " + a.getAddress() +
                         "\n" +
                         "\nPet's name: " + b.getPetName() +
                         "\nPet's age: " + b.getPetAge() +
@@ -179,29 +188,11 @@ class LastPanel extends JPanel{
          
          print.addActionListener(new ActionListener(){  //---------------Back button
             public void actionPerformed(ActionEvent e){
-              popup = new JFrame();
-                 filename=JOptionPane.showInputDialog(popup,"Enter Filename(Include file extension): ");
-              if(filename==null)   
-                 popup.dispose();
-              else{
               
-                 //-----------------
-                 File f = new File(filename);
-                  if(f.isFile()) { 
-                      popup = new JFrame();
-                      int testing = JOptionPane.showConfirmDialog (popup, "The filename already exist with data, proceed?(YES=Delete & Add, NO=Just Add)",
-                                                                   "Warning",JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE);
-                      if(testing == JOptionPane.YES_OPTION){
-                         justWriter();
-                        }
-                      else if(testing == JOptionPane.NO_OPTION) writeInput();
-                      else{ 
-                         popup.dispose();
-                      }
-                        
-                  }else{
-                    writeInput();
-                  }
+              if(filename!=null || !filename.equals(""))   
+                 writeInput();
+              else{
+                 System.out.println("eroor");
               }
               
             }
@@ -221,6 +212,28 @@ class LastPanel extends JPanel{
         
         
     }
+    
+    public void readFile(){
+       BufferedReader reader;
+   	   try {
+   			reader = new BufferedReader(new FileReader(filename));
+   			String line = reader.readLine();
+            String output="";
+   			while (line != null) {
+   				output += line + "\n";
+   				// read next line
+   				line = reader.readLine();
+   			}
+            output += "\n";
+            info.setText(output);
+   			reader.close();
+   		} catch (IOException io) {
+   			info.setText(io.toString());
+   		}
+
+    
+    }
+    
     public void writeInput(){
       File file = new File(filename);
 		FileWriter fr = null;
@@ -243,22 +256,9 @@ class LastPanel extends JPanel{
 			} catch (IOException e) {
 				printResult.setText("Error! Missing file");
 			}catch(NullPointerException f){
-            printResult.setText("Error! filename cannot empty");
-         }
+                          printResult.setText("Error! filename cannot empty");
+                        }
 		}
     }
-    
-    public void justWriter(){
-    
-    try{
-      PrintWriter out = new PrintWriter(filename); 
-      out.println(finals);
-      out.close();
-      printResult.setText("Successfully printing data to " + filename);  
-      }catch(IOException e){
-        System.out.println("ERROR: " + e);
-     } 
-       
-   }
 
 }
