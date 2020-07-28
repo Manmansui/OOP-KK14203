@@ -75,9 +75,16 @@ class cakePanel extends JPanel implements ActionListener{
       String checkzx = "";
       
       if(command.equals("Add Topping")){
+	      
+         if(jcb.getSelectedItem().toString().equals("[Select]")){
+            JOptionPane.showMessageDialog(null, "Please select toppings...");
+         }
+         else{
          
-         order.add(jcb.getSelectedItem().toString());      
-         jt1.append(jcb.getSelectedItem().toString() + "\n");   
+            order.add(jcb.getSelectedItem().toString());      
+            jt1.append(jcb.getSelectedItem().toString() + "\n");
+         
+         }  
       }
       else if(command.equals("Order")){
 
