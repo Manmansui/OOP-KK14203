@@ -6,10 +6,13 @@ import java.util.*;
 import java.io.*;
 import javax.swing.BorderFactory;
 import javax.swing.border.Border;
+//=====================================
+
+
 
 class LoginPanel extends JPanel {
     private JLabel header, jcomp2, jcomp3;
-    private JTextField jtf_user;
+    private TextField jtf_user;//-===================
     private JPasswordField jpf_pass;
     private JButton b_log;
     private JLabel success;
@@ -17,10 +20,32 @@ class LoginPanel extends JPanel {
     private  JFrame frame;
     Border border = BorderFactory.createLoweredBevelBorder();
     
+    //============================================
+    private JMenuBar menuBar;
+    private JMenu menu;
+    private JMenuItem REGISTER;
+    
 
     public LoginPanel(JFrame frame1, Login log) {
         UIManager.put("Button.background", Color.GRAY);
         frame = frame1;
+        
+        
+        //==================================================//
+        menuBar = new JMenuBar();
+        menu = new JMenu("Menu");
+        menu.setMnemonic(KeyEvent.VK_M);
+        
+        
+        REGISTER = new JMenuItem("Register. ", KeyEvent.VK_T);
+        REGISTER.setAccelerator(KeyStroke.getKeyStroke(
+                KeyEvent.VK_1, ActionEvent.ALT_MASK));
+        menu.add(REGISTER);
+        
+        menuBar.add(menu);
+        add(menuBar);   
+        menuBar.setBounds(2, 0, 640, 27); 
+        
         
         //construct components
         header = new JLabel ("Veterinary Registration System");
@@ -36,11 +61,13 @@ class LoginPanel extends JPanel {
         jcomp3 = new JLabel ("Password");
         jcomp3.setFont(new Font("Arial", Font.PLAIN, 15)); 
         
-        jtf_user = new JTextField ();
+        jtf_user = new TextField ();
         jtf_user.setFont(new Font("Arial", Font.PLAIN, 15));
+        jtf_user.setText("firman");
         
         jpf_pass = new JPasswordField ();
         jpf_pass.setFont(new Font("Arial", Font.PLAIN, 15));
+        jpf_pass.setText("123");
    
         b_log = new JButton ("Login");
         success = new JLabel("");
@@ -62,14 +89,14 @@ class LoginPanel extends JPanel {
         add (reset);
 
         //set component bounds (only needed by Absolute Positioning)
-        header.setBounds (110, 30, 290, 35);
+        header.setBounds (110, 40, 290, 35);
         jcomp2.setBounds (55, 100, 100, 25);
         jcomp3.setBounds (55, 135, 100, 25);
-        jpf_pass.setBounds (160, 135, 210, 30);
-        jtf_user.setBounds (160, 95, 210, 30);
-        reset.setBounds (270, 175, 100, 25);
-        b_log.setBounds (160, 175, 100, 25);
-        success.setBounds (55, 200, 250, 25);
+        jpf_pass.setBounds (160, 135, 210, 30);//-----
+        jtf_user.setBounds (160, 95, 210, 29);
+        reset.setBounds (270, 185, 100, 25);
+        b_log.setBounds (160, 185, 100, 25);
+        success.setBounds (55, 210, 250, 25);
         
         reset.addActionListener(new ActionListener(){  
             public void actionPerformed(ActionEvent e){
@@ -105,6 +132,19 @@ class LoginPanel extends JPanel {
                        
             }  
          });
+         
+         REGISTER.addActionListener(new ActionListener() {
+         public void actionPerformed(ActionEvent ev) {
+           System.out.println("OK");
+           System.out.println("test");
+                  frame.getContentPane().removeAll();
+                  frame.getContentPane().add (new RegisterPanel(frame, log));             
+                  frame.pack();
+                  frame.setVisible (true);
+         }
+       });
+       
+       
     }
     
 }
